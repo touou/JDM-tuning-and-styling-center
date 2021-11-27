@@ -32,7 +32,7 @@ namespace JDMTune.Controllers
 
         [Route("registration")]
         [HttpPost]
-        public IActionResult Registration([FromForm] RegRequest request)
+        public IActionResult Registration([FromBody] RegRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace JDMTune.Controllers
 
         [Route("login")]
         [HttpPost]
-        public IActionResult Login([FromForm] AuthRequest request)
+        public IActionResult Login([FromBody] AuthRequest request)
         {
             
             var user = AuthenticateUser(request.Email, request.Password);
@@ -101,7 +101,6 @@ namespace JDMTune.Controllers
                 
             };
             
-
             var token = new JwtSecurityToken(
                 authParams.Issuer,
                 authParams.Audience,

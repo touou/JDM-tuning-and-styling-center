@@ -7,11 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d5c6c9-120b-43c1-b9db-464846b6bcaa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JDMTune/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JDMTune/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/JDMTune.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/JDMTune/JDMTune.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/JDMTune/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/JDMTune/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JDMTune/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/JDMTune/Controllers/AuthController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,8 @@
       <updated>1636725834152</updated>
       <workItem from="1636725863067" duration="89000" />
       <workItem from="1636726133614" duration="249000" />
-      <workItem from="1637979626429" duration="10044000" />
+      <workItem from="1637979626429" duration="13711000" />
+      <workItem from="1638025232545" duration="617000" />
     </task>
     <servers />
   </component>
