@@ -34,13 +34,8 @@ namespace JDMTune.Controllers
         [HttpPost]
         public IActionResult Registration([FromBody] RegRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                //returns some view which will added later
-            }
             //try to Authenticate User
-            var pass = HashPassword(request.Password);
-            var user = AuthenticateUser(request.Email, pass);
+            var user = IsUserExist(request.Email);
             if (user != null)
             {
                 return Ok("this account exists");
@@ -50,7 +45,7 @@ namespace JDMTune.Controllers
             {
                 Id = Guid.NewGuid(),
                 Email = request.Email,
-                Password = HashPassword(request.Password),
+                Password = Encrypt(request.Password),
                 Role = "User",
             };
             
@@ -64,8 +59,8 @@ namespace JDMTune.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] AuthRequest request)
         {
-            
-            var user = AuthenticateUser(request.Email, request.Password);
+            var pass = Encrypt(request.Password);
+            var user = AuthenticateUser(request.Email,pass);
             if (user != null)
             {
                 var token = JwtGenerate(user);
@@ -84,6 +79,11 @@ namespace JDMTune.Controllers
         public User AuthenticateUser(string email, string password)
         {
             return _data.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
+
+        public User IsUserExist(string email)
+        {
+            return _data.Users.FirstOrDefault(u => u.Email==email);
         }
 
         private string JwtGenerate(User user)
