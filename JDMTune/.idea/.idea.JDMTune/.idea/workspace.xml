@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f2d5c6c9-120b-43c1-b9db-464846b6bcaa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JDMTune/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JDMTune/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JDMTune/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/JDMTune/Controllers/AuthController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,9 @@
       <workItem from="1636726133614" duration="249000" />
       <workItem from="1637979626429" duration="13711000" />
       <workItem from="1638025232545" duration="617000" />
-      <workItem from="1638100563322" duration="2153000" />
+      <workItem from="1638100563322" duration="2321000" />
+      <workItem from="1638104776572" duration="868000" />
+      <workItem from="1639173410184" duration="1013000" />
     </task>
     <servers />
   </component>
