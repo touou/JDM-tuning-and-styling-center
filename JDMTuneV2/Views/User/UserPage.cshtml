@@ -1,0 +1,41 @@
+﻿@using JDMTuneV2.Data
+@using LinqToDB
+@model BillingRequest
+
+<div class="user_profile">
+    <h3>Профиль Пользователя</h3>
+    <div class="main_part">
+        <div class="left_side">
+            Пользователь: @User.Identity.Name
+        </div>
+        <div class="right_side">
+            @{
+                var data=new DataRepository("Host=localhost;Username=postgres;Password=Rus1032002;Database=JdmTune");
+                var user = data.GetAccountByEmail(User.Identity.Name);
+                var address = data.GetAddressById(user.Id);
+                if (address != null)
+                {
+                    <ul>
+                        <li>Старана: @address.Country</li>
+                        <li>Город: @address.City</li>
+                        <li>Почтовый Индекс: @address.PostIndex</li>
+                        <li>Улица: @address.FullAddress</li>
+                    </ul>
+                }
+                else
+                {
+                    <form class="address-form" asp-action="UserPage">
+                        <input asp-for="Country" type="text" placeholder="Страна">
+                        <input asp-for="City" type="text" placeholder="Город">
+                        <input asp-for="PostIndex" type="text" placeholder="Почтовый индекс">
+                        <input asp-for="FullAddress" type="text" placeholder="Улица">
+                        
+                        <button type="submit">Запомнить адрес</button>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+

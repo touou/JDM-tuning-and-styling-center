@@ -8,6 +8,7 @@ using JDMTuneV2.Models;
 using JDMTuneV2.PassHasher;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,31 @@ namespace JDMTuneV2.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult UserPage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult UserPage([FromForm] BillingRequest request)
+        {
+            var user = IsUserExists(User.Identity?.Name);
+
+            var address = new BillingAddress
+            {
+                UserId = user.Id,
+                Country = request.Country,
+                City = request.City,
+                PostIndex = request.PostIndex,
+                FullAddress = request.FullAddress,
+            };
+            
+            _data.AddAddress(address);
+
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -56,7 +82,7 @@ namespace JDMTuneV2.Controllers
                     return Conflict("Account already exist");
                 }
 
-                user = new User()
+                user = new User
                 {
                     Id = Guid.NewGuid(),
                     Email = request.Email,

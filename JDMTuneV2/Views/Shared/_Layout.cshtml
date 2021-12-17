@@ -1,49 +1,210 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using JDMTuneV2.Data
+<!DOCTYPE html>
+<html lang="zxx">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - JDMTuneV2</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Violet</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
 </head>
+
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">JDMTuneV2</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                    <li><a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="LogOut">LogOut</a></li>
-                </ul>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Search model -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search model end -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" alt=""></a>
+                </div>
+                <div class="header-right">
+                    <img src="~/img/icons/search.png" alt="" class="search-trigger">
+                    <a asp-controller="User" asp-action="UserPage">
+                        <img src="~/img/icons/man.png" alt="" >
+                    </a>
+                    <a asp-controller="Shop" asp-action="ShoppingCart">
+                        <img src="~/img/icons/bag.png" alt="">
+                        
+                    </a>
+                </div>
+                <div class="user-access">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var name = User.Identity.Name;
+                        <a asp-controller="User" asp-action="UserPage" class="nav-item  text-color">@name</a>
+                        <a asp-controller="User" asp-action="Logout" class="in">LogOut</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="User" asp-action=Registration>Register</a>
+                        <a asp-controller="User" asp-action=Login class="in">Sign in</a>
+                    }
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a class="active" href="./index.html">Home</a></li>
+                        <li><a asp-controller="Shop" asp-action="MarketPlace">Shop</a>
+                            <ul class="sub-menu">
+                                <li><a asp-controller="Shop" asp-action="ShoppingCart">Shopping Card</a></li>
+                                <li><a asp-controller="Shop" asp-action="CheckOut">Check out</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a asp-controller="Home" asp-action="ContactUs">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </nav>
-</header>
+    </header>
+    <!-- Header Info Begin -->
+    <div class="header-info">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="header-item">
+                        <img src="~/img/icons/delivery.png" alt="">
+                        <p>Бесплатная доставка от 2500 рублей</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-lg-center">
+                    <div class="header-item">
+                        <img src="~/img/icons/voucher.png" alt="">
+                        <p>20% Скидка для студентов</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-left text-xl-right">
+                    <div class="header-item">
+                    <img src="~/img/icons/sales.png" alt="">
+                    <p>30% скидка на всё.Промокод: YaClown</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Info End -->
+    <!-- Header End -->
+
+
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2021 - JDMTuneV2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+<footer class="footer-section spad">
+        <div class="container">
+            
+            <div class="footer-widget">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>О нас</h4>
+                            <ul>
+                                <li>О нас</li>
+                                <li>Сообщество</li>
+                                <li>Работа</li>
+                                <li>Доставка</li>
+                                <li>Связь с нами</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Забота о покупателях</h4>
+                            <ul>
+                                <li>Поиск</li>
+                                <li>Политика приватности</li>
+                                <li>2021 Lookbook</li>
+                                <li>Доставка</li>
+                                <li>Галлерея</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Наш Сервис</h4>
+                            <ul>
+                                <li>Бесплатная доставка</li>
+                                <li>Возврат товара</li>
+                                <li>Франшиза</li>
+                                <li>Условия</li>
+                                <li>Политика приватности</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Информация</h4>
+                            <ul>
+                                <li>Способы оплаты</li>
+                                <li>Время и цена доставки</li>
+                                <li>Возварт товара</li>
+                                <li>Методы доставки</li>
+                                <li>Подтверждение товара</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+				</div>
+			</div>
+            
+		</div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/mixitup.min.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
+
 </html>
+

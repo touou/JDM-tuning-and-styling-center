@@ -24,6 +24,19 @@ namespace JDMTuneV2.Controllers
             return View();
         }
 
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult ContactUs(string str)
+        {
+            return View();
+        }
+
+        
+
         [Authorize]
         public IActionResult Privacy()
         {
