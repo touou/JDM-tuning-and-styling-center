@@ -1,0 +1,107 @@
+﻿@using JDMTuneV2.Data
+@using LinqToDB
+@model BillingRequest
+
+<div class="user_profile">
+    <h3>Профиль Пользователя: @User.Identity.Name</h3>
+    <h1>_</h1>
+    <div class="main_part">
+        <div class="right_side">
+            @{
+                var data=new DataRepository("Host=localhost;Username=postgres;Password=Rus1032002;Database=JdmTune");
+                var user = data.GetAccountByEmail(User.Identity.Name);
+                var address = data.GetAddressById(user.Id);
+                if (address != null)
+                {
+                    <div class="col-lg-12">
+                        <h3>Текущий Адрес</h3>
+                    </div>
+                    <div class="main-menu mobile-menu">
+                        <ul class="sub-menu">
+                            <li>Страна: @address.Country</li>
+                            <li>Город: @address.City</li>
+                            <li>Почтовый Индекс: @address.PostIndex</li>
+                            <li>Улица: @address.FullAddress</li>
+                            <form asp-action="DeleteAddress">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="payment-method">
+                                            <button type="submit">Удалить Адрес</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </ul>
+                        </div>
+                }
+                else
+                {
+                    <section class="cart-total-page spad">
+                        <div class="container">
+                            <form asp-action="UserPage" class="checkout-form">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h3>Добавить Адрес</h3>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <p class="in-name">Country</p>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <input asp-for="Country" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <p class="in-name">City</p>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <input asp-for="City" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <p class="in-name">Post Index</p>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <input asp-for="PostIndex" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                                                                    <div class="col-lg-2">
+                                                                                        <p class="in-name">Улица</p>
+                                                                                    </div>
+                                                                                    <div class="col-lg-10">
+                                                                                        <input asp-for="FullAddress" type="text">
+                                                                                    </div>
+                                                                                </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="payment-method">
+                                            <button type="submit">Добавить Адрес</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                }
+            }
+            
+            @{
+                var order = data.SearchOrderByUserId(user.Id);
+                <h2>____</h2>
+                if (order != null)
+                {
+                    <h3>Order Id: @order.OrderId</h3>
+                }
+                
+            }
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,39 @@
+﻿@model AuthRequest
+
+
+<section class="cart-total-page spad">
+        <div class="container">
+            <form asp-action="Login" class="checkout-form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Авторизация</h3>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p class="in-name">Email</p>
+                            </div>
+                            <div class="col-lg-10">
+                                <input asp-for="Email" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p class="in-name">Password</p>
+                            </div>
+                            <div class="col-lg-10">
+                                <input asp-for="Password" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="payment-method">
+                            <button type="submit">Войти</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
