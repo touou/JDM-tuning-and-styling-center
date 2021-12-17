@@ -18,10 +18,12 @@ namespace JDMTuneV2.Data
             Connection = new DataConnection(optionsBuilder.Build());
         }
         
-
+        
         public ITable<User> Users => Connection.GetTable<User>();
 
         public ITable<BillingAddress> Addresses => Connection.GetTable<BillingAddress>();
+        
+        public ITable<Order> Orders => Connection.GetTable<Order>();
 
         public void AccountCreate(User acc)
         {
@@ -31,6 +33,11 @@ namespace JDMTuneV2.Data
         public void AddAddress(BillingAddress address)
         {
             Connection.Insert(address);
+        }
+
+        public void AddOrder(Order order)
+        {
+            Connection.Insert(order);
         }
 
         public User GetAccountById(Guid id)
@@ -47,7 +54,15 @@ namespace JDMTuneV2.Data
         {
             return Addresses.FirstOrDefault(a => a.UserId == id);
         }
-        
-        
+
+        public void RemoverAddress(BillingAddress address)
+        {
+            Connection.Delete(address);
+        }
+
+        public Order SearchOrderByUserId(Guid Id)
+        {
+            return Orders.FirstOrDefault(o => o.UserId == Id);
+        }
     }
 }

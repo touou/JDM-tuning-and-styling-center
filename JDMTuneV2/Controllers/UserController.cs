@@ -36,11 +36,25 @@ namespace JDMTuneV2.Controllers
         }
 
         [Authorize]
+        
         public IActionResult UserPage()
         {
+
             return View();
         }
 
+        [HttpPost]
+        public IActionResult DeleteAddress()
+        {
+            var user = IsUserExists(User.Identity?.Name);
+
+            var address = _data.GetAddressById(user.Id);
+            
+            _data.RemoverAddress(address);
+
+            return View("UserPage");
+        }
+        
         [HttpPost]
         public IActionResult UserPage([FromForm] BillingRequest request)
         {

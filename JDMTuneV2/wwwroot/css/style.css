@@ -995,6 +995,10 @@ ol {
 	height: 100%;
 }
 
+.reg-form input{
+	margin-bottom: 20px;
+}
+
 .social-links a i {
 	font-size: 30px;
 	color: #d7d7d7;

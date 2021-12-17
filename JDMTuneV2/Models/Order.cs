@@ -26,6 +26,6 @@ namespace JDMTuneV2.Models
         [Column(Name = "PhoneNumber")]
         public string PhoneNumber { get; set; }
         
-        public Guid ClotheId { get; set; }
+        
     }
 }
